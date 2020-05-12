@@ -1,0 +1,44 @@
+<%- include('../partials/_header') %>
+<%- include('../partials/_navbar') %>
+
+<div class="flexing-user-form">
+    <img src="/img/top_trian.jpg" class="z-depth-1">
+        <h2 class="white-text user-form-title">Přihlásit se</h2>
+        <div class="handle-user-form z-depth-1">
+
+            <form method="POST" action="/ucet/prihlasit">
+                
+                <% if (errors.length === 0) { %>
+                    <div class="input-field">
+                        <input name="email" id="email" type="email" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                    <input name="password" id="password" type="password" class="validate" required>
+                        <label for="password">Heslo</label>
+                    </div>
+                <% } else { %>
+                    <div class="input-field">
+                        <input value="<%= postedData.email %>" name="email" id="email" type="email" class="validate <%= (isWrongEmail) ? 'invalid' : '' %>" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input value="<%= postedData.password %>" name="password" id="password" type="password" class="validate <%= (isWrongPassword) ? 'invalid' : '' %>" required>
+                        <label for="password">Heslo</label>
+                    </div>
+                <% } %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                <button type="submit" class="user-sign-button white-text light-green darken-1">Přihlásit se</button>
+                <a href="/ucet/registrovat" class="green-text">Registrovat</a>
+
+            </form>
+
+            <% errors.forEach((error) => { %>
+                <p class="red-text"><%= error %></p>
+            <% }) %>
+        </div>
+        
+</div>
+
+<%- include('../partials/_footer') %>

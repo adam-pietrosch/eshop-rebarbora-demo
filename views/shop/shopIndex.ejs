@@ -1,0 +1,119 @@
+<%- include('../partials/_header') %>
+<%- include('../partials/_navbar') %>
+
+
+<div class="shop-landing row">
+    <div class="dark-background">
+        <div class="col s12">
+            <h1 class="shop-welcome">Vítejte v našem online obchodě</h1>
+            <div class="handle-shop-now">
+                <!-- <a class="shop-now z-depth-3" href="#">Jít nakupovat</a> -->
+            </div>
+        </div>
+
+        <div class="container">
+            <h5 class="white-text">Nejpopulárnější produkty</h5>
+            <br>
+            <div class="row">
+                <div class="col s12 m6 l4">
+                    <br>
+                    <div class="card z-depth-4 landing-card">
+                        <div class="card-image">
+                            <img src="/img/snack1.png">
+                            <a class="btn-floating halfway-fab waves-effect waves-light light-green">
+                                <i class="white-text material-icons">shopping_cart</i>
+                            </a>
+                        </div>
+                        <div class="card-content black-text">
+                            <span class="card-title">Card Title</span>
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                                I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                            <p class="trend-card-price">12 Kč</p>
+                            <a class="green-text" href="#">Detaily</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4">
+                    <div class="card z-depth-4 landing-card super-trend-card">
+                        <div class="card-image">
+                            <img src="/img/snack2.png">
+                            <a class="btn-floating halfway-fab waves-effect waves-light white">
+                                <i class="black-text material-icons">shopping_cart</i>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title white-text">Card Title</span>
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                                I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                            <p class="trend-card-price">12 Kč</p>
+                            <a class="white-text" href="#">Detaily</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4">
+                    <br>
+                    <div class="card z-depth-4 landing-card">
+                        <div class="card-image">
+                            <img src="/img/snack3.png">
+                            <a class="btn-floating halfway-fab waves-effect waves-light light-green">
+                                <i class="white-text material-icons">shopping_cart</i>
+                            </a>
+                        </div>
+                        <div class="card-content black-text">
+                            <span class="card-title">Card Title</span>
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                                I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                            <p class="trend-card-price">12 Kč</p>
+                            <a class="green-text" href="#">Detaily</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="all-products container">
+    <div class="row">
+        
+        <% products.forEach((product) => { %>
+            <div class="col s12 m6 l4">
+                <div class="product-card">
+
+                    <div class="product-card-img">
+                        <img src="<%= product.imgPath %>">
+                        <a onclick="addToCart('<%= product._id %>')" class="product-card-link-cart btn-floating waves-effect waves-light light-green">
+                            <i class="material-icons">shopping_cart</i>
+                        </a>
+                        <% if (isAdminLoggedIn) { %>
+                            <a href="/obchod/upravit/<%= product.slug %>"
+                                class="product-card-link-edit btn-floating waves-effect waves-light orange">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        <% } %>
+                    </div>
+                    <h6 class="product-card-title"><%= product.title %></h6>
+                    <p class="product-card-description">
+                        <%= product.shortDescription %>
+                    </p>
+                    <p class="product-card-price">
+                        <%= product.price %> Kč
+                    </p>
+                    <a href="#" class="product-card-link">Detaily</a>
+
+                </div>
+            </div>
+        <% }) %>               
+        
+    </div>
+</div>
+
+
+
+<%- include('../partials/_footer') %>

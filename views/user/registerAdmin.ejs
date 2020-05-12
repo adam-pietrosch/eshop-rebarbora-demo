@@ -1,0 +1,68 @@
+<%- include('../partials/_header') %>
+<%- include('../partials/_navbar') %>
+
+<div class="flexing-user-form">
+    <img src="/img/top_trian.jpg">
+    <h2 class="white-text user-form-title">Zaregistrovat se - admin</h2>
+    <div class="handle-user-form z-depth-1">
+        <form method="POST" action="/ucet/registrovat-admin" class="row">
+
+            <% if (errors.length === 0) { %>
+                <div class="input-field col s6">
+                    <input name="firstName" id="firstName" type="text" class="validate" required>
+                    <label for="firstName">Jméno</label>
+                </div>
+                <div class="input-field col s6">
+                    <input name="surName" id="surName" type="text" class="validate" required>
+                    <label for="surName">Příjmení</label>
+                </div>
+                <div class="input-field col s12">
+                    <input name="email" id="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input name="password" id="password" type="password" class="validate" required>
+                    <label for="password">Heslo</label>
+                </div>
+                <div class="input-field col s12">
+                    <input name="adminKey" id="adminKey" type="text" class="validate" required>
+                    <label for="adminKey">Admin klíč</label>
+                </div>
+
+            <% } else { %>
+                <div class="input-field col s6">
+                    <input value="<%= postedData.firstName %>" name="firstName" id="firstName" type="text" class="validate" required>
+                    <label for="firstName">Jméno</label>
+                </div>
+                <div class="input-field col s6">
+                    <input value="<%= postedData.surName %>" name="surName" id="surName" type="text" class="validate" required>
+                    <label for="surName">Příjmení</label>
+                </div>
+                <div class="input-field col s12">
+                <input value="<%= postedData.email %>" name="email" id="email" type="email" class="validate <% if (isWrongEmail) { %> invalid <% } %>" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input value="<%= postedData.password %>" name="password" id="password" type="password" class="validate" required>
+                    <label for="password">Heslo</label>
+                </div>
+                <div class="input-field col s12">
+                    <input value="<%= postedData.adminKey %>" name="adminKey" id="adminKey" type="text" class="validate" required>
+                    <label for="adminKey">Admin klíč</label>
+                </div>
+            <% } %>
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <br>
+            <button type="submit" class="user-sign-button white-text light-green darken-1">Registrovat</button>
+            <a href="/ucet/prihlasit" class="green-text">Přihlásit</a>
+        </form>
+
+        <% errors.forEach((error) => { %>
+        <p class="red-text"><%= error %></p>
+        <% }) %>
+    </div>
+
+</div>
+
+<%- include('../partials/_footer') %>
