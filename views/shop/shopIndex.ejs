@@ -1,6 +1,9 @@
 <%- include('../partials/_header') %>
 <%- include('../partials/_navbar') %>
 
+<% if (!isAdminLoggedIn) { %>
+    <%- include('../partials/_clientChat') %>
+<% } %>
 
 <div class="shop-landing row">
     <div class="dark-background">
@@ -91,12 +94,6 @@
                         <a onclick="addToCart('<%= product._id %>')" class="product-card-link-cart btn-floating waves-effect waves-light light-green">
                             <i class="material-icons">shopping_cart</i>
                         </a>
-                        <% if (isAdminLoggedIn) { %>
-                            <a href="/obchod/upravit/<%= product.slug %>"
-                                class="product-card-link-edit btn-floating waves-effect waves-light orange">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        <% } %>
                     </div>
                     <h6 class="product-card-title"><%= product.title %></h6>
                     <p class="product-card-description">

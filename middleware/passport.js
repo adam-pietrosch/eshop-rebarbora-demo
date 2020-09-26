@@ -48,7 +48,7 @@ passport.use('local.registerAdmin', new localStrategy({
     if (user) {
         return done(null, false, { message: 'Email je zabraný.' })
     }
-    const rightKey = process.env.ADMIN_SECRET == req.body.adminKey
+    const rightKey = process.env.ADMIN_SECRET === req.body.adminKey
     if (!rightKey) {
         return done(null, false, { message: 'Špatný admin klíč.'})
     }

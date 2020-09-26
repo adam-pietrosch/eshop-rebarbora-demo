@@ -1,13 +1,10 @@
 <%- include('../partials/_header') %>
 <%- include('../partials/_navbar') %>
 
+<%- include('../partials/_adminSideBar') %>
 
 <div class="container edit-product-page">
     <h2>Upravit - <%= product.title %></h2>
-
-    <% if (successMsg) { %>
-        <span id="added-product-span"><%= successMsg %></span>
-    <% } %>
 
     <div class="row">
 

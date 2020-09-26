@@ -1,0 +1,51 @@
+<%- include('../partials/_header') %>
+<%- include('../partials/_navbar') %>
+<%- include('../partials/_adminSideBar') %>
+
+
+<div class="main">
+    <a class="side-bar-summoner"><i class="material-icons">arrow_forward</i></a>
+
+    <div class="handle-content">
+        <div class="chats-panel" id="chat-panel">
+            <!--
+                <div class="chat-card active-message">
+                    <i class="material-icons left red-text">sms_failed</i>
+                    <p class="time">12:49</p>
+                    <p class="last-message">Chtěl bych se zeptat na...</p>
+                </div>
+                <div class="chat-card">
+                    <p class="time">12:49</p>
+                    <p class="last-message">Chtěl bych se zeptat na ten produkt s...</p>
+                </div>
+            -->            
+        </div>
+        
+        <div id="given-chat" class="given-chat">
+
+            <div class="message-input">
+                <div class="input-field">
+                    <i class="material-icons prefix">message</i>
+                    <input id="text-input" type="text" class="validate">
+                    <label for="text-input">Zpráva...</label>
+                    
+                </div>
+                <a id="send-button" class="send">poslat<i class="material-icons right">arrow_forward</i></a>
+            </div>
+
+            <!--
+                <div class="message">
+                <div class="client-message">
+                    Zdravím. Chtěl jsem se zeptat na...
+                </div>
+            </div> 
+            -->
+                      
+            
+            
+        </div>
+    </div>
+    
+</div>
+
+<%- include('../partials/_footer') %>

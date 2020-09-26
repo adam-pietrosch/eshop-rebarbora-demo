@@ -1,7 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
 const port = process.env.PORT || 3000
+const url = require('url')
 const mongo = require('mongoose')
 const session = require('express-session')
 const bodyParser = require('body-parser')
@@ -9,6 +12,7 @@ const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const flash = require('express-flash')
 const MongoStore = require('connect-mongo')(session)
+
 
 // DATABASE CONNECTION
 mongo.connect('mongodb://localhost/rebarbora', {
@@ -23,6 +27,7 @@ db.once('open', () => console.log('Connected to the database...'));
 
 // SET PROPERTIES   
 require('./middleware/passport')
+require('./middleware/socket')(io)
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -44,18 +49,22 @@ app.use(passport.session())
 
 app.use((req, res, next) => {
     res.locals.title = 'Zdravá výživa'
-    res.locals.activeLink = ''
+    res.locals.url = url.parse(req.url).pathname
     res.locals.cart = req.session.cart || {}
     res.locals.isLoggedIn = req.isAuthenticated()
     res.locals.isAdminLoggedIn = (req.isAuthenticated()) ? req.user.isAdmin : false
     res.locals.userName = (req.isAuthenticated()) ? `${req.user.firstName} ${req.user.surName}` : null
-    res.locals.successMsg = req.flash('success')[0]
+    res.locals.successMsg = req.flash('success')[0] || null
     next()
 })
+
 
 // ROUTES
 const indexRouter = require('./routes/indexRouter')
 app.use('/', indexRouter)
+
+const adminRouter = require('./routes/adminRouter')
+app.use('/admin', adminRouter)
 
 const shopRouter = require('./routes/shopRouter')
 app.use('/obchod', shopRouter)
@@ -74,9 +83,9 @@ app.use('/test', testRouter)
 
 app.use((req, res, next) => { // handle 404 status
     res.status(404)
-    res.redirect('/')
+    res.send('404')
 });
 
 
 // RUN SERVER ON PORT
-app.listen(port, () => console.log('Server is running on: ' + port))
+http.listen(port, () => console.log('Server is running on: ' + port))

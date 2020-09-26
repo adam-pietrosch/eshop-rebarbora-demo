@@ -1,0 +1,85 @@
+.handle-content {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+}
+.chats-panel {
+    height: 100%;
+    width: 25%;
+    float: left;
+    border-right: 1px solid #bdbdbd;
+    padding: 1rem;
+}
+.given-chat {
+    height: 100%;
+    width: 75%;
+    float: right;
+    position: relative;
+}
+.chat-card {
+    width: 100%;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 1.3rem .7rem 1.3rem .7rem;
+    cursor: pointer;
+}
+.chat-card i {
+    margin-top: .2rem;
+}
+.chat-card .time {
+    float: left;
+    margin: 0 2rem 0 0;
+    font-size: 1.2rem;
+    color: #9e9e9e;
+}
+.chat-card .last-message {
+    margin: 0;
+    color: #9e9e9e;
+    margin-top: .1rem;
+}
+.active-message, .active-message .last-message, .active-message .time {
+    color: black;
+    font-weight: bold;
+}
+.message {
+    width: 100%;
+    padding: .3rem 0 .3rem 0;
+    display: inline-block;
+}
+.admin-message {
+    padding: .8rem 2rem .8rem 2rem;
+    background: linear-gradient(to right, #7cb342, #689f38);
+    color: white;
+    border-radius: 24px 0 0 24px;
+    display: inline-block;
+    float: right;
+}
+.client-message {
+    padding: .8rem 2rem .8rem 2rem;
+    background: #e0e0e0;
+    color: black;
+    border-radius: 0 24px 24px 0;
+    display: inline-block;
+}
+.message-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 2rem 0 2rem;
+}
+.message-input .send {
+    position: absolute;
+    right: 0;
+    top: 1.4rem;
+    padding: .6rem 1rem .5rem 1rem;
+    color: green;
+    background: white;
+    border: 1px solid green;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.message-input .input-field {
+    width: 80%;
+}
+.message-input .send i {
+    font-size: 1.4rem;
+}

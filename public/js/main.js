@@ -1,14 +1,25 @@
+var socket = io();
 document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {
-        hover: true, // Activate on hover
+    
+
+    // Materialize Dropdowns
+    var dropElements = document.querySelectorAll('.dropdown-trigger');
+    var dropdowns = M.Dropdown.init(dropElements, {
+        hover: true,
         coverTrigger: false,
         constrainWidth: false
-    });
-});
+    })
 
-document.addEventListener('DOMContentLoaded', function () {
-    // ADDED PRODUCT
-    var span = document.getElementById('added-product-span')
-    if (span) M.toast({ html: span.innerHTML + ' <i class="material-icons white-text">done</i>'})
-});
+    // Show toast on flash succes message
+    if (successMsg) M.toast({ html: successMsg + ' <i class="material-icons white-text">done</i>' })
+
+    // Menage active links in main menu
+    const links = document.querySelectorAll('.main-link, .main-link-icons > a')
+    Array.prototype.forEach.call(links, (link) => {
+        const linkHref = link.href.substr(21, link.href.length)
+        console.log(linkHref)
+        if (linkHref === url) {
+            link.classList.add('active-main')
+        }
+    })
+})

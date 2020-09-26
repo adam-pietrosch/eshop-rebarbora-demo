@@ -1,0 +1,82 @@
+.landing-page {
+    height: 100%;
+    width: 100%;
+    padding-top: 10rem;
+}
+img.landing-bowl {
+    position: absolute;
+    top: 11%;
+    right: 0;
+}
+.landing-caption {
+    padding: 0
+}
+.landing-title {
+    font-size: 120px;
+    font-weight: 100;
+}
+.landing-caption > p {
+    font-size: 20px;
+    max-width: 50rem;
+    margin-bottom: 2rem;
+}
+a.landing-button {
+    font-size: 20px;
+    display: inline-block;
+    padding: 10px 35px;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;  
+    position: relative;
+    text-decoration: none;
+    color: black;
+    border: none; 
+    outline: none;
+    transition: .3s all ease-in-out;
+}
+a.landing-button span {
+  position: relative; 
+  z-index: 1;
+}
+a.landing-button:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 400%;
+  width: 140%;
+  background: linear-gradient(to right top, #8bc34a, #558b2f);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+a.landing-button:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+.landing-cards {
+    padding: 0 17% 0 40%;
+}
+.landing-card {
+    border-radius: 20px;
+}
+.landing-card * {
+    transition: .3s all;
+}
+.landing-card > .card-image > img {
+    border-radius: 20px 20px 0 0 !important;
+}
+.landing-card > .card-action {
+    border-radius: 20px !important;
+} 
+.landing-card > .card-content {
+    padding-bottom: 0;
+}
+.landing-card > .card-image > .card-title {
+    padding: .4rem .8rem;
+    font-size: 22px;
+}
+.landing-card > .card-action > a:hover > i {
+    margin-left: .8rem;
+}

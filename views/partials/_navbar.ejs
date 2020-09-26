@@ -1,16 +1,16 @@
 <div class="main-navbar">
     <div class="container">
         <a href="/" class="main-logo light-green-text text-darken-4">Zdravá výživa</a>
-        
+
         <div class="main-links">
-            <a href="/" class="<%= (activeLink === 'uvod') ? 'active-main' : '' %> main-link">Úvod</a>
-            <a href="/obchod" class="<%= (activeLink === 'obchod') ? 'active-main' : '' %> main-link">Obchod</a>
-            <a href="/blog" class="<%= (activeLink === 'blog') ? 'active-main' : '' %> main-link">Blog</a>
-            <a href="/novinky" class="<%= (activeLink === 'novinky') ? 'active-main' : '' %> main-link">Novinky</a>
-            <a href="/kontakt" class="<%= (activeLink === 'kontakt') ? 'active-main' : '' %> main-link">Kontakt</a>
+            <a href="/" class="main-link">Úvod</a>
+            <a href="/obchod" class="main-link">Obchod</a>
+            <a href="/blog" class="main-link">Blog</a>
+            <a href="/novinky" class="main-link">Novinky</a>
+            <a href="/kontakt" class="main-link">Kontakt</a>
 
             <div class="main-link-icons">
-                <a href="/obchod/kosik" class="<%= (activeLink === 'kosik') ? 'active-main' : '' %>">
+                <a href="/obchod/kosik">
                     <i class="material-icons">shopping_cart</i>
                     
                     
@@ -20,19 +20,26 @@
                         <% } %>
                     </span>
                 </a>
-                <a href="#"  data-target='accounts' class="dropdown-trigger <%= (activeLink === 'ucet') ? 'active-main' : '' %>">
+                <a href="#"  data-target='accounts' class="dropdown-trigger">
                     <i class="material-icons">account_circle</i>
                 </a>
-                <a href="#" class="<%= (activeLink === 'hledani') ? 'active-main' : '' %>">
+                <a href="#">
                     <i class="material-icons">search</i>
                 </a>
             </div>
 
             <ul id='accounts' class='dropdown-content account-dropdown'>
+
                 <% if (isLoggedIn) { %>
                     <li><a class="black-text" href="/ucet/profil"><%= userName %></a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a class="black-text" href="/ucet/odhlasit">Odhlásit se</a></li>
+
+                    <% if (isAdminLoggedIn) { %>
+                        <li><a class="black-text" href="/admin">Administrace <i class="right material-icons grey-text admin-icon">verified_user</i></a></li>
+                        <li class="divider" tabindex="-1"></li>
+                    <% } %>
+
+                    <li><a class="black-text" href="/ucet/odhlasit">Odhlásit se</a></li>                   
                 <% } else { %>
                     <li><a class="black-text" href="/ucet/prihlasit">Přihlásit se</a></li>
                     <li class="divider" tabindex="-1"></li>
