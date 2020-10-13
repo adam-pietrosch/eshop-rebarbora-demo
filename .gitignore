@@ -1,7 +1,6 @@
-# disregard the output folder with contents–we don’t want the build output folder on GitHub!
+
 ouput/*
 
-# disregard the node_modules folder with contents!
 node_modules/*
 
 .env
